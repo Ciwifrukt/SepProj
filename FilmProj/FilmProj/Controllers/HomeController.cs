@@ -40,11 +40,7 @@ namespace FilmProj.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult UserMovies()
-        {
-            return View();
-        }
+
 
 
         [HttpGet("CreateTestUsers")]
@@ -54,7 +50,7 @@ namespace FilmProj.Controllers
         }
 
         [HttpPost("CreateTestUsers")]
-        async public Task<IActionResult> CreateTestUsers(MovieVm vm)
+        async public Task<IActionResult> CreateTestUserz()
         {
             await _auth.CreateTestUsers();
             return View("CreateTestUsers");
