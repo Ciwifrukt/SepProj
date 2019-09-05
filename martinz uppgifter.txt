@@ -1,0 +1,7 @@
+view
+1 med lsita saker man sett
+1 med saker man vill se
+
+
+om pro user; lägga till saker man vill se, saker har sett
+basic user; filmer dem har sett
