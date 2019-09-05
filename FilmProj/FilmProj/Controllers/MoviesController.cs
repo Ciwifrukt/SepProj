@@ -17,10 +17,7 @@ namespace FilmProj.Controllers
         }
 
 
-        public IActionResult Details()
-        {
-            return View();
-        }
+
 
 
         // GET: Movies
@@ -90,7 +87,7 @@ namespace FilmProj.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Director,Description")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Director,Description, ImgUrl")] Movie movie)
         {
             if (id != movie.Id)
             {
@@ -115,7 +112,7 @@ namespace FilmProj.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return View("Details", movie);
             }
             return View(movie);
         }
