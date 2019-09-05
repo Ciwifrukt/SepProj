@@ -18,6 +18,6 @@ namespace FilmProj.Services
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-        }
+        }   
     }
 }
