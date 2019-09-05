@@ -19,6 +19,13 @@ namespace FilmProj.Controllers
             _context = context;
         }
 
+
+        public IActionResult Details()
+        {
+            return View();
+        }
+
+
         // GET: Movies
         public async Task<IActionResult> Index()
         {
