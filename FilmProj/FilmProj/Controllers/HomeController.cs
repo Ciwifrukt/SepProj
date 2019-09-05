@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using FilmProj.Models;
 using FilmProj.Models.ViewModels;
 using FilmProj.Services;
+using FilmProj.ViewModels;
 
 namespace FilmProj.Controllers
 {
@@ -39,44 +40,59 @@ namespace FilmProj.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult UserMovies()
         {
             return View();
         }
 
-        //[HttpGet("AddRoleForUser")]
-        //public async Task<IActionResult> AddRoleForUser(AddRoleVm addrole)
-        //{
 
-        //    if (!ModelState.IsValid)
-        //        return View("Index");
+        [HttpGet("CreateTestUsers")]
+        public IActionResult CreateTestUsers()
+        {
+            return View();
+        }
 
-        //    bool userExist = await _auth.UserExist(addrole.Email);
+        [HttpPost("CreateTestUsers")]
+        async public Task<IActionResult> CreateTestUsers(MovieVm vm)
+        {
+            await _auth.CreateTestUsers();
+            return View("CreateTestUsers");
+        }
 
-        //    if (!userExist)
-        //    {
-        //        ModelState.AddModelError("UserDontExist", $"User with email {addrole.Email} doesn't exist");
-        //        return View("Index");
-        //    }
 
-        //    bool alreadyInRole = await _auth.IsInRoleAsync(addrole.Email, addrole.RoleName);
+        [HttpGet("AddRoleForUser")]
+        public async Task<IActionResult> AddRoleForUser(AddRoleVm addrole)
+        {
+            
+            if (!ModelState.IsValid)
+                return View("Index");
 
-        //    if (alreadyInRole)
-        //    {
-        //        ModelState.AddModelError("UserAlreadyInrole", $"{addrole.Email} already belongs to role {addrole.RoleName}");
-        //        return View("Index");
-        //    }
+            bool userExist = await _auth.UserExist(addrole.Email);
 
-        //    bool roleExist = await _auth.RoleExistsAsync(addrole.RoleName);
+            if (!userExist)
+            {
+                ModelState.AddModelError("UserDontExist", $"User with email {addrole.Email} doesn't exist");
+                return View("Index");
+            }
 
-        //    if (!roleExist)
-        //        await _auth.CreateRoleAsync(addrole.RoleName); // todo: hantera oväntat fel
+            bool alreadyInRole = await _auth.IsInRoleAsync(addrole.Email, addrole.RoleName);
 
-        //    await _auth.AddToRoleAsync(addrole.Email, addrole.RoleName);
+            if (alreadyInRole)
+            {
+                ModelState.AddModelError("UserAlreadyInrole", $"{addrole.Email} already belongs to role {addrole.RoleName}");
+                return View("Index");
+            }
 
-        //    return View("SuccessAddRole", addrole);
+            bool roleExist = await _auth.RoleExistsAsync(addrole.RoleName);
 
-        //}
+            if (!roleExist)
+                await _auth.CreateRoleAsync(addrole.RoleName); // todo: hantera oväntat fel
+
+            await _auth.AddToRoleAsync(addrole.Email, addrole.RoleName);
+
+            return View("SuccessAddRole", addrole);
+
+        }
     }
 }
