@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FilmProj.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace FilmProj.Controllers
 {
@@ -17,12 +18,21 @@ namespace FilmProj.Controllers
         }
 
 
-
+        [Authorize(Roles = "SuperAdmin")]
         [HttpGet]
-        public IActionResult UserMovies()
+        public IActionResult SuperUserMovies()
         {
             return View();
         }
+
+
+        [Authorize(Roles = "CategoryAdmin")]
+        [HttpGet]
+        public IActionResult BasicUserMovies()
+        {
+            return View();
+        }
+
 
         // GET: Movies
         public async Task<IActionResult> Index()
