@@ -1,5 +1,4 @@
-﻿@model IEnumerable<FilmProj.Models.Movie>
-
+﻿@model IEnumerable<Movie>;
 @{
     ViewData["Title"] = "Index";
 }
@@ -10,37 +9,21 @@
     <a asp-action="Create">Create New</a>
 </p>
 <div class="container">
+    <div class="thumbnail">
 
-    <div class="row">
-        <div class="col-sm">
-            <div class="thumbnail">
+        @foreach (var movie in Model)
+        {
 
-                <img src="https://images-na.ssl-images-amazon.com/images/I/71CHZi4vhWL._SY679_.jpg" />
-                <div class="card-body">
-                    <div class="card-text">Forest Gump</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="thumbnail">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/71CHZi4vhWL._SY679_.jpg" />
-                <div class="card-body">
-                    <div class="card-text">Forest Gump</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm">
-            <div class="thumbnail">
-                <img src="https://images-na.ssl-images-amazon.com/images/I/71CHZi4vhWL._SY679_.jpg" />
-                <div class="card-body">
-                    <div class="card-text">Forest Gump</div>
-                </div>
-            </div>
-        </div>
+            <a asp-action="Details"><img src="@movie.ImgUrl" /></a>
+
+
+        }
     </div>
 
 
-    </div>
+
+
+</div>
 
 
 
