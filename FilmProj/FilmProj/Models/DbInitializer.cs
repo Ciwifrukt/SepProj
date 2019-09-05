@@ -9,7 +9,7 @@ namespace FilmProj
         internal static void Seed(AppDbContext context)
         {
 
-            if (!context.Movies.Any())
+            if (!context.Movie.Any())
             {
                 context.AddRange
                 (

@@ -10,7 +10,12 @@ namespace FilmProj
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
 
+<<<<<<< HEAD
+        }
+        public DbSet<Movie> Movies { get; set; }
+=======
             }
         public DbSet<Movie> Movie { get; set; }
+>>>>>>> e38b6f91b79f928571adc9cfc69efec6b9247a6b
     }
 }
