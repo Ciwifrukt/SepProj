@@ -30,5 +30,10 @@ namespace FilmProj.Controllers
         {
             return View();
         }
+
+        public IActionResult UserMovies()
+        {
+            return View();
+        }
     }
 }
