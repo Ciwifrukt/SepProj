@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using FilmProj.Models;
 
 namespace FilmProj.Data
 {
@@ -12,5 +13,6 @@ namespace FilmProj.Data
             : base(options)
         {
         }
+        public DbSet<FilmProj.Models.Movie> Movie { get; set; }
     }
 }
