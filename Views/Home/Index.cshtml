@@ -1,0 +1,30 @@
+﻿@model BethanysPieShop.ViewModels.HomeViewModel
+
+@*
+    Detta är vyn för startsidan
+    Tack vare att HomeViewModel har två properties så kan vi både rita ut titlen och alla pajerna
+*@
+
+<h2>@Model.Title</h2>
+
+@foreach (var pie in Model.Pies)
+{
+    <div class="col-sm-4 col-lg-4 col-md-4">
+        <div class="thumbnail">
+            <img src="@pie.ImageThumbnailUrl" alt="">
+            <div class="caption">
+                <h3 class="pull-right">@pie.Price.ToString("c")</h3>
+                <h3>
+                    @*
+                        Detta ser kanske märkvärdigt ut men det enda som händer är att en <a>-tag genereras
+                        Kolla i "View source" för att se vilken HTML som genereras
+                        *@
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@pie.Id">@pie.Name</a>
+
+                </h3>
+                <p>@pie.ShortDescription</p>
+            </div>
+        </div>
+    </div>
+}
+

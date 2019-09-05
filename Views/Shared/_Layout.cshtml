@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <nav class="navbar navbar-inverse bg-danger navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+
+                    <li><a asp-controller="Home" asp-action="Index" class="navbar-brand">Bethany's Pie Shop</a></li>
+                    <li><a asp-controller="Feedback" asp-action="Index">Feedback</a></li>
+
+                    @*
+                        En "partial" är helt enkelt en del av en vy
+                        Den kan användas från flera vyer
+
+                        "Partials" är bra och du kan med fördel skapa massa små partials.
+                        Om du ser kod som upprepas i din vy kan det vara läge med en "partial".
+                    *@
+
+                    <partial name="_LoginPartial" />
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container body-content">
+        <div class="row">
+            @*
+                
+            Här skjuts din vy in (HTML-koden läggs här)
+            
+           *@
+
+            @RenderBody()
+        </div>
+    </div>
+
+    @*
+        Din vy kan om den önskar skicka kod till Layoutsidan med hjälp av "section"
+
+        Tack vare "section" så kan din behöver inte din vy skicka all HTML-kod till RenderBody ovan.
+    *@
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

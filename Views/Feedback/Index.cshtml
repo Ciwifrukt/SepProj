@@ -1,0 +1,85 @@
+﻿@*
+Den första raden säger att denna vy förväntar sig ett objekt av sorten "Feedback".
+    
+Skickas någon annat sort hit så kommer vyn protestera
+
+Vyn kan innehålla logik (ex ifsatser) men ska vara så enkel som möjligt. Vyn ska inte vara smart.
+Vyn behöver ingen kännedom om vilken controller som använder den vilket är bra. Det skapar en "lös koppling"    
+*@
+
+@model Feedback
+
+
+@*
+De taggar som är lila är "tag helpers". Det är ett nytt koncept. 
+Tidigare användes bara "Html helpers". De löser samma problem men "tag helpers" är lite mer clean och ser mer ut som HTML.
+
+Vissa funktioner kräver "Html helpers" så det är inte fel att blanda dem. 
+Men om du hittar motsvarande "tag helper" så använd den istället.   
+
+"Tag helpers" (och "html helpers") har ett enda syfte i världen: de omvandlar sig själva till HTML.
+Om du vill se vilken HTML som genereras så surfa in på sidan och välj "View Source"
+*@
+    <form asp-action="Index" method="post" class="form-horizontal" role="form">
+
+        @*
+            Denna tag fylls med felmeddelanden (till användaren) om det är något fel med valideringen (ModelState)
+        *@
+        <div asp-validation-summary="All" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-5">
+                <input asp-for="Name" class="form-control" />
+
+                @*
+                    Denna tag fylls med ett felmeddelande om namnet har felaktigt format
+                *@
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        @*
+        Taghelpern har kännedom om typen på vyn som används
+
+        Eftersom "Feedback" innehåller en property "Email" så kan vi skriva
+
+            <input asp-for="Email"
+
+        och det blir fel om vi skriver
+
+            <input asp-for="Emailllllll"
+
+        ...vilket är kanon eftersom det blir mindre risk av vi skriver fel
+
+        *@
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label"></label>
+            <div class="col-md-5">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Message" class="col-md-2 control-label"></label>
+            <div class="col-md-5">
+                <textarea asp-for="Message" class="form-control"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ContactMe" class="col-md-2 control-label"></label>
+            <div class="col-md-5">
+                <input type="checkbox" asp-for="ContactMe" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <input type="submit" class="btn btn-primary" value="Send feedback" />
+            </div>
+        </div>
+
+    </form>
