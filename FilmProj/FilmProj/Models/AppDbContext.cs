@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FilmProj
 {
-    internal class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext
     {
        
             public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
             {
 
             }
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Movie> Movie { get; set; }
     }
 }
