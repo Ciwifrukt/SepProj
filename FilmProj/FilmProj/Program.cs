@@ -16,8 +16,8 @@ namespace FilmProj
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<AppDbContext>();
-                    DbInitializer.Seed(context);
+                    //var context = services.GetRequiredService<AppDbContext>();
+                    //DbInitializer.Seed(context);
                 }
                 catch (Exception)
                 {
