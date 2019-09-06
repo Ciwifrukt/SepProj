@@ -17,18 +17,9 @@ namespace FilmProj.Controllers
             _context = context;
         }
 
-
-        [Authorize(Roles = "SuperAdmin")]
+        
         [HttpGet]
-        public IActionResult SuperUserMovies()
-        {
-            return View();
-        }
-
-
-        [Authorize(Roles = "CategoryAdmin")]
-        [HttpGet]
-        public IActionResult BasicUserMovies()
+        public IActionResult UserMovies()
         {
             return View();
         }

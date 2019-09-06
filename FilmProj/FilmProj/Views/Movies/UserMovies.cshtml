@@ -1,0 +1,29 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject FilmProj.Services.AuthService  x
+@{
+    bool superUserLogin = User.IsInRole("SuperAdmin"); //ser om inloggad e super user.
+
+    if(superUserLogin)
+    {
+        ViewData["Title"] = "Super User Moviez";
+    } else
+    {
+        ViewData["Title"] = "User Moviez";
+    }
+}
+
+    <div class="row">
+
+        @if (superUserLogin)
+        {
+            <div class="col-4 offset-2 alert-danger">
+                To watch movies
+            </div>
+        }
+        <div class="col-4 alert-danger">
+
+            Watched movies
+        </div>
+
+    </div>

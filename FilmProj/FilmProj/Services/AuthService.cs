@@ -36,7 +36,14 @@ namespace FilmProj.Services
         public async Task<bool> IsInRoleAsync(string email, string rolename)
         {
             IdentityUser user = await _userManager.FindByNameAsync(email);
-            return await _userManager.IsInRoleAsync(user, rolename);
+
+            try
+            {
+                return await _userManager.IsInRoleAsync(user, rolename);
+            } catch
+            {
+                return false;
+            } 
         }
 
         public async Task<bool> RoleExistsAsync(string rolename)
