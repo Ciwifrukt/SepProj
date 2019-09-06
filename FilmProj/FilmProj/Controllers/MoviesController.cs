@@ -18,7 +18,11 @@ namespace FilmProj.Controllers
 
 
 
-
+        [HttpGet]
+        public IActionResult UserMovies()
+        {
+            return View();
+        }
 
         // GET: Movies
         public async Task<IActionResult> Index()
