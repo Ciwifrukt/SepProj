@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Identity
-
+@model List<Movie>
 
 @inject FilmProj.Services.AuthService x
 
@@ -16,11 +16,14 @@
         ViewData["Title"] = "User Moviez";
     }
 }
-
+@*@foreach(Movie m in Model)
+{
+    <p>@m.Title</p>
+}*@
 
 @if (superUserLogin || categoryLogin)
 {
-    <div class="row justify-content-center">
+    <div class="row justify-content-around">
         @if (superUserLogin)
         {
             <partial name="ToWatch" />

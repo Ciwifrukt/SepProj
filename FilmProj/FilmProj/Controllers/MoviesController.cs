@@ -22,7 +22,7 @@ namespace FilmProj.Controllers
         [HttpGet]
         public IActionResult UserMovies()
         {
-            return View();
+            return View(_context.Movie.ToList()); //testar bara jujst nu.
         }
 
 

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Movie>
 
 @* Used as partial view *@
 
@@ -7,9 +7,72 @@
         Watched movies
 
         <ul>
-            <li>Get movie und display.</li>
-            <li>Get movie und display.</li>
-            <li>Get movie und display.</li>
-            <li>Get movie und display.</li>
+            @foreach (Movie m in Model)
+            {
+                <li>@m.Title</li>
+            }
         </ul>
     </div>
+
+
+    @*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ApartmentNumber)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rent)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Rooms)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Size)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OperatingCost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.HousingCooperative)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApartmentNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rooms)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Size)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OperatingCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.HousingCooperative.Name)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
