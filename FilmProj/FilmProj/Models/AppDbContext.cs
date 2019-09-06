@@ -12,5 +12,7 @@ namespace FilmProj
 
             }
         public DbSet<Movie> Movie { get; set; }
+        public DbSet<UserMovies> UserMovies { get; set; }
+
     }
 }

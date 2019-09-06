@@ -156,5 +156,19 @@ namespace FilmProj.Controllers
         {
             return _context.Movie.Any(e => e.Id == id);
         }
+
+        public async Task<IActionResult> AddToWatch(string name, int movieid)
+        {
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(movie);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //return View(movie);
+            var movie = await _context.Movie.FindAsync(movieid);
+            var userExists = _context.UserMovies.Any(e => e.User == name);
+            return View();
+        }
     }
 }
