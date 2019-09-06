@@ -1,33 +1,36 @@
-﻿@model FilmProj.Models.Movie
+﻿@model FilmProj.ViewModels.MovieVm
 
     <div class="container">
-  <div class="row">
-      <div class="col-md">
-          <img src="@Model.ImgUrl" />
-          </div>
-      
-      <div class="col-md">
-          <div class="container" style="height:400px">
-              <div class="row" style="height:15%">
-                  <h1>@Model.Title</h1>
+        <div class="row">
+            <div class="col-md">
+                <img src="@Model.Movie.ImgUrl" />
+            </div>
+            @Model.UserId.Name
+            
 
-              </div>
-              <div class="row" style="height:10%">
-                  <b>Director: @Model.Director</b>
-</div>
-                  <div class="row" style="height:60%">
-                      <p>@Model.Description</p>
-                  </div>
+            <div class="col-md">
+                <div class="container" style="height:400px">
+                    <div class="row" style="height:15%">
+                        <h1>@Model.Movie.Title</h1>
 
-                  <div class="row" style="height:30%">
-                      <p>
-                          <a class="links" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-                          <a class="links" asp-action="Edit" asp-route-id="@Model.Id">To watch</a>
-                          <a class="links" asp-action="Edit" asp-route-id="@Model.Id">Watched</a>
-                        
+                    </div>
+                    <div class="row" style="height:10%">
+                        <b>Director: @Model.Movie.Director</b>
+                    </div>
+                    <div class="row" style="height:60%">
+                        <p>@Model.Movie.Description</p>
+                    </div>
 
-                      </p>
-                  </div>
-              </div>
+                    <div class="row" style="height:30%">
+                        <p>
+                            <a class="links" asp-action="Edit" asp-route-id="@Model.Movie.">Edit</a>
+                            <a class="links" asp-action="Add" asp-route-id="@Model.Movie.Id">To watch</a>
+                            <a class="links" asp-action="Edit" asp-route-id="@Model.Movie.Id">Watched</a>
 
-          </div></div></div>
+
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div></div>

@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using FilmProj.Models;
+using System.Security.Principal;
 namespace FilmProj.ViewModels
 {
     public class MovieVm
     {
-        
+        public IIdentity UserId { get; set; }
+        public Movie Movie { get; set; }
+
     }
 }

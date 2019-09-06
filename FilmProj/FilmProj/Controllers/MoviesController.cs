@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FilmProj.Models;
+using FilmProj.ViewModels;
 
 namespace FilmProj.Controllers
 {
@@ -45,7 +46,7 @@ namespace FilmProj.Controllers
                 return NotFound();
             }
 
-            return View(movie);
+            return View(new MovieVm { Movie = movie, UserId = User.Identity });
         }
 
         // GET: Movies/Create
