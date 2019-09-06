@@ -4,8 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FilmProj.Models;
-using FilmProj.ViewModels;
+<<<<<<< HEAD
 using Microsoft.AspNetCore.Authorization;
+=======
+using FilmProj.ViewModels;
+>>>>>>> d488c2a82c07ace36acd0720e6b24e9363198e4c
 
 namespace FilmProj.Controllers
 {
