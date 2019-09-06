@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using FilmProj.Models;
 using FilmProj.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace FilmProj.Controllers
 {
@@ -159,16 +160,41 @@ namespace FilmProj.Controllers
 
         public async Task<IActionResult> AddToWatch(string name, int movieid)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    _context.Add(movie);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-            //}
-            //return View(movie);
+            
             var movie = await _context.Movie.FindAsync(movieid);
-            var userExists = _context.UserMovies.Any(e => e.User == name);
-            return View();
+            var userExists = _context.UserMovies.Any(e => e.UserName == name);
+            if (!userExists)
+            {
+                _context.UserMovies.Add(new UserMovies { UserName = name });
+                _context.SaveChanges();
+            }
+            var rrr = _context.UserMovies.Include(x => x.ToWatch).SingleOrDefault(user => user.UserName == name);
+            rrr.ToWatch.Add(movie);
+            _context.SaveChanges();
+
+            ViewBag.Chan = "towatch";
+            var ll = new MovieVm { Movie = movie, UserId= User.Identity };
+            return View($"Details", ll);
+        }
+
+
+        public async Task<IActionResult> AddWatched(string name, int movieid)
+        {
+
+            var movie = await _context.Movie.FindAsync(movieid);
+            var userExists = _context.UserMovies.Any(e => e.UserName == name);
+            if (!userExists)
+            {
+                _context.UserMovies.Add(new UserMovies { UserName = name });
+                _context.SaveChanges();
+            }
+            var rrr = _context.UserMovies.Include(x => x.Watched).SingleOrDefault(user => user.UserName == name);
+            rrr.Watched.Add(movie);
+            _context.SaveChanges();
+
+            ViewBag.Chan = "watched";
+            var ll = new MovieVm { Movie = movie, UserId = User.Identity };
+            return View($"Details", ll);
         }
     }
 }

@@ -24,8 +24,10 @@
                     <div class="row" style="height:30%">
                         <p>
                             <a class="links" asp-action="Edit" asp-route-id="@Model.Movie.Id">Edit</a>
-                            <a class="links" asp-action="AddToWatch" asp-route-movieid="@Model.Movie.Id" asp-route-name="@Model.UserId.Name">To watch</a>
-                            <a class="links" asp-action="AddWatched" asp-route-id="@Model.Movie.Id">Watched</a>
+                      
+                            <a class='links' asp-action='AddToWatch' asp-route-movieid='@Model.Movie.Id' asp-route-name='@User.Identity.Name'>To watch</a>
+                      
+                            <a class="links" asp-action="AddWatched" asp-route-id="@Model.Movie.Id" asp-route-name='@User.Identity.Name'>Watched</a>
 
 
                         </p>
